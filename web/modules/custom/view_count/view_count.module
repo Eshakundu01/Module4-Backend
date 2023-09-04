@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * This file is used for implementing hooks.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_track_count().
+ */
+function view_count_track_count($current_count, NodeInterface $node) {
+  if (\Drupal::currentUser()->isAnonymous()) {
+    if ($current_count === 2) {
+      \Drupal::messenger()->addMessage('Viewed the node %title 1 time.', ['%title' => $node->label()]);
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function view_count_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  // Count the number of times the current node has been viewed in a session.
+  if ($entity->bundle() == 'news') {
+    $session = \Drupal::request()->getSession();
+    $counts = $session->get('hooks_example.view_counts', []);
+    if (!isset($counts[$entity->id()])) {
+      $counts[$entity->id()] = 1;
+    }
+    else {
+      $counts[$entity->id()]++;
+    }
+    $session->set('hooks_example.view_counts', $counts);
+
+    // Invoke a hook to alert other modules that the count was updated.
+    $module_handler = \Drupal::moduleHandler();
+
+    // The hook_track_count() is being invoked.
+    $module_handler->invokeAll('track_count', [$counts[$entity->id()], $entity]);
+
+    // Display the number of times the user has viewed the node.
+    $build['view_count'] = [
+      '#markup' => '<p>' . t('You have viewed this node @total times this session.', ['@total' => $counts[$entity->id()]]) . '</p>',
+      '#cache' => [
+        'context' => ['url'],
+      ],
+    ];
+  }
+}

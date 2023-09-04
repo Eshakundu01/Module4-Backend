@@ -3,47 +3,34 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.article
-    - node.type.page
-    - taxonomy.vocabulary.tags
+    - node.type.news
+    - workflows.workflow.editorial
   module:
-    - comment
+    - content_moderation
     - contextual
     - file
     - node
-    - path
     - system
-    - taxonomy
     - toolbar
     - tour
 _core:
   default_config_hash: NtMgnXp0miNtJhag07NSjwdCm4zpJwhlDFs1HgyL4wI
 id: content_editor
-label: 'Content editor'
-weight: 2
+label: Editor
+weight: -7
 is_admin: false
 permissions:
   - 'access administration pages'
+  - 'access content'
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
   - 'access toolbar'
   - 'access tour'
-  - 'administer url aliases'
-  - 'create article content'
-  - 'create page content'
-  - 'create terms in tags'
-  - 'create url aliases'
-  - 'delete article revisions'
-  - 'delete own article content'
-  - 'delete own files'
-  - 'delete own page content'
-  - 'delete page revisions'
-  - 'edit own article content'
-  - 'edit own comments'
-  - 'edit own page content'
-  - 'edit terms in tags'
-  - 'revert all revisions'
-  - 'view all revisions'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'view any unpublished content'
+  - 'view news revisions'
   - 'view own unpublished content'
   - 'view the administration theme'

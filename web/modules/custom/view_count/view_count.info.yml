@@ -1,0 +1,5 @@
+name: View Count
+type: module
+core_version_requirement: ^10
+package: Custom
+description: 'Counts the anonymous users vists.'

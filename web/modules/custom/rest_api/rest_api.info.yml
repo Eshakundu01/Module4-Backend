@@ -1,0 +1,5 @@
+name: Rest API
+type: module
+core_version_requirement: ^10
+package: Custom
+description: 'Expose data in json format.'

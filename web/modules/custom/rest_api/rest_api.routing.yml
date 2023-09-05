@@ -1,0 +1,15 @@
+rest.data:
+  path: '/news/data'
+  defaults:
+    _controller: 'Drupal\rest_api\Controller\DataController::result'
+  requirements:
+    _permission: 'access content'
+    format: json
+
+rest.parameters:
+  path: '/news/parameter'
+  defaults:
+    _form: 'Drupal\rest_api\Form\ParameterForm'
+    _title: 'Select the Parameters'
+  requirements:
+    _permission: 'access content'

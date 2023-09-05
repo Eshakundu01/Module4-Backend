@@ -22,6 +22,7 @@ settings:
       - numberedList
       - '|'
       - blockQuote
+      - alignment
       - drupalInsertImage
       - '|'
       - heading
@@ -29,6 +30,12 @@ settings:
       - '|'
       - sourceEditing
   plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
     ckeditor5_heading:
       enabled_headings:
         - heading2

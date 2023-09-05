@@ -1,0 +1,6 @@
+rest.parameter:
+  title: API
+  route_name: rest.parameters
+  parent: main
+  menu_name: main
+  weight: 6

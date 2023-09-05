@@ -1,0 +1,20 @@
+uuid: f9ee6efe-5c9f-43bf-9d09-edcad8fd2739
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - text
+id: block_content.sb_banner_b_headline
+field_name: sb_banner_b_headline
+entity_type: block_content
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

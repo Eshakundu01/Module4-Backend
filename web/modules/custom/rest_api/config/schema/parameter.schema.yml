@@ -1,0 +1,10 @@
+parameters.settings:
+  type: mapping
+  label: 'Configuration for parameters'
+  mapping:
+    tags:
+      type: string
+      label: 'The tags used in news'
+    count:
+      type: integer
+      label: 'The data item count'

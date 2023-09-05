@@ -221,6 +221,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      use_ajax: true
       link_display: page_1
       link_url: ''
       header:
